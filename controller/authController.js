@@ -27,14 +27,19 @@ export const register = async (req, res, next) => {
   }
 };
 
+
+
 export const login = async (req, res, next) => {
   const { email, password } = req.body;
+
   try {
-    const user = await User.findOne({ email, password });
-    if (!user) {
+    const user = await User.findOne({ email });
+
+    if (!user || user.password !== password) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    res.json({
+
+    res.status(200).json({
       _id: user._id,
       name: user.name,
       email: user.email,
