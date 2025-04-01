@@ -18,7 +18,8 @@ const app = express();
 
 // ✅ Enable CORS for frontend
 app.use(cors({
-  origin: 'http://localhost:3000', // allow your React frontend
+  origin:[ 'http://localhost:3000',
+ 'https://hrm543.netlify.app'], //allow your React frontend
   credentials: true
 }));
 
